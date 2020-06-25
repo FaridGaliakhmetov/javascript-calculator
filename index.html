@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>javascript calculator</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div id="container">
+<div id="display"><p id="rez"></p><p id="cur">0</p></div>
+<div id="clear" type="button"><p>C</p></div>
+ <div id="buttons">
+  <button id="seven" type="button" value="7">7</button><button id="eight" type="button" value="8">8</button><button id="nine" type="button" value="9">9</button><button id="divide" type="button" value="/">/</button><button id="four" type="button" value="4">4</button><button id="five" type="button" value="5">5</button><button id="six" type="button" value="6">6</button><button id="multiply" type="button" value="*">*</button><button id="one" type="button" value="1">1</button><button id="two" type="button" value="2">2</button><button id="three" type="button" value="3">3</button><button id="subtract" type="button" value="-">-</button><button id="zero" type="button" value="0">0</button><button id="decimal" type="button" value=".">.</button><button id="equals" type="button" value="=">=</button><button id="add" type="button" value="+">+</button>
+ </div>
+</div>
+<p id="note">Designed and coded by <b>Farid</b></p>
+<script>
+var x = "";
+document.getElementById("clear").onclick = function(){result(document.getElementById("clear"))};
+document.getElementById("zero").onclick = function(){result(document.getElementById("zero"))};
+document.getElementById("one").onclick =    function(){result(document.getElementById("one"))};
+document.getElementById("two").onclick = function(){result(document.getElementById("two"))};
+document.getElementById("three").onclick = function(){result(document.getElementById("three"))};
+document.getElementById("four").onclick = function(){result(document.getElementById("four"))};
+document.getElementById("five").onclick = function(){result(document.getElementById("five"))};
+document.getElementById("six").onclick = function(){result(document.getElementById("six"))};
+document.getElementById("seven").onclick = function(){result(document.getElementById("seven"))};
+document.getElementById("eight").onclick = function(){result(document.getElementById("eight"))};
+document.getElementById("nine").onclick = function(){result(document.getElementById("nine"))};
+document.getElementById("divide").onclick = function(){result(document.getElementById("divide"))};
+document.getElementById("multiply").onclick = function(){result(document.getElementById("multiply"))};
+document.getElementById("subtract").onclick = function(){result(document.getElementById("subtract"))};
+document.getElementById("add").onclick = function(){result(document.getElementById("add"))};
+document.getElementById("equals").onclick = function(){result(document.getElementById("equals"))};
+document.getElementById("decimal").onclick = function(){result(document.getElementById("decimal"))};
+
+
+function result(obj){
+  var r =/\d/;   
+  x=x+obj.value;
+  if(obj.id==="clear"){
+    document.getElementById("rez").innerHTML = 0;
+	document.getElementById("cur").innerHTML=0;
+	x="";
+  } 
+  else{  
+    document.getElementById("cur").innerHTML=obj.value;  
+    document.getElementById("rez").innerHTML = x;
+  }
+}
+
+</script>
+</body>
+</html>
