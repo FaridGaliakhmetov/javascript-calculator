@@ -20,6 +20,9 @@
 	
 }
 
+body {
+	background-color:hsl(120,30%,70%);
+}
 #clear {
 	width:140px;
 	height:70px;

@@ -7,7 +7,7 @@
 </head>
 <body>
 <div id="container">
-<div id="display"><p id="rez"></p><p id="cur">0</p></div>
+<div id="display"><p id="rez"></p><p id="cur"></p></div>
 <div id="clear" type="button"><p>C</p></div>
  <div id="buttons">
   <button id="seven" type="button" value="7">7</button><button id="eight" type="button" value="8">8</button><button id="nine" type="button" value="9">9</button><button id="divide" type="button" value="/">/</button><button id="four" type="button" value="4">4</button><button id="five" type="button" value="5">5</button><button id="six" type="button" value="6">6</button><button id="multiply" type="button" value="*">*</button><button id="one" type="button" value="1">1</button><button id="two" type="button" value="2">2</button><button id="three" type="button" value="3">3</button><button id="subtract" type="button" value="-">-</button><button id="zero" type="button" value="0">0</button><button id="decimal" type="button" value=".">.</button><button id="equals" type="button" value="=">=</button><button id="add" type="button" value="+">+</button>
@@ -15,7 +15,10 @@
 </div>
 <p id="note">Designed and coded by <b>Farid</b></p>
 <script>
-var x = "";
+var x = 0;
+var y = 0;
+document.getElementById("cur").innerHTML=y;
+
 document.getElementById("clear").onclick = function(){result(document.getElementById("clear"))};
 document.getElementById("zero").onclick = function(){result(document.getElementById("zero"))};
 document.getElementById("one").onclick =    function(){result(document.getElementById("one"))};
@@ -36,18 +39,52 @@ document.getElementById("decimal").onclick = function(){result(document.getEleme
 
 
 function result(obj){
-  var r =/\d/;   
-  x=x+obj.value;
-  if(obj.id==="clear"){
-    document.getElementById("rez").innerHTML = 0;
-	document.getElementById("cur").innerHTML=0;
-	x="";
+ /* 
+  if(/\d/.test(obj.value)){
+     if(/[^\d]/.test(y) && y!=="."){
+	   y="";
+	 }
+    y=y+obj.value;
   } 
-  else{  
-    document.getElementById("cur").innerHTML=obj.value;  
-    document.getElementById("rez").innerHTML = x;
+  else {
+    y = obj.value;
+  }  
+  if(x===""  && obj.value==="."){
+     x="0.";
+	 y="0.";
   }
-}
+  else{  
+	x=x+obj.value;
+  }	 */
+/*сбросить на ноль*/
+  if(obj.id==="clear"){
+    y=0;
+	x="";
+	document.getElementById("rez").innerHTML = x;
+    document.getElementById("cur").innerHTML=y;	
+  }      
+  
+/*число или знак дроби*/  
+  if(/\d/.test(obj.value) || obj.value==="." && !(/\./g.test(y)) ){
+      /*убирает начальный ноль при первом вводе*/
+	  if(/[1-9]/.test(obj.value) && y===0 || /[0]/.test(obj.value) && y==="0" || /[0]/.test(obj.value) && y===0){
+	      y="";
+	  }
+	 
+	y=y+obj.value;  
+    document.getElementById("cur").innerHTML=y; 
+	x="";
+	x=y;
+	document.getElementById("rez").innerHTML=x;
+  }
+  
+  /*знак операции*/
+ // if(/[\*\+\-\/]/.test(obj.value)){
+    
+//  }
+  
+  
+}     /*function end*/
 
 </script>
 </body>
