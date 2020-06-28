@@ -67,7 +67,7 @@ function result(obj){
 /*число или знак дроби*/  
   if(/\d/.test(obj.value) || obj.value==="." && !(/\./g.test(y)) ){
       /*убирает начальный ноль при первом вводе*/
-	  if(/[1-9]/.test(obj.value) && y===0 || /[0]/.test(obj.value) && y==="0" || /[0]/.test(obj.value) && y===0){
+	  if(/[1-9]/.test(obj.value) && y===0 || /[1-9]/.test(obj.value) && y==="0" || /[0]/.test(obj.value) && y==="0" || /[0]/.test(obj.value) && y===0){
 	      y="";
 	  }
 	 
