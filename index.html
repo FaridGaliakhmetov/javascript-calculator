@@ -15,7 +15,7 @@
 </div>
 <p id="note">Designed and coded by <b>Farid</b></p>
 <script>
-var x = 0;
+var x = "";
 var y = 0;
 document.getElementById("cur").innerHTML=y;
 
@@ -39,23 +39,7 @@ document.getElementById("decimal").onclick = function(){result(document.getEleme
 
 
 function result(obj){
- /* 
-  if(/\d/.test(obj.value)){
-     if(/[^\d]/.test(y) && y!=="."){
-	   y="";
-	 }
-    y=y+obj.value;
-  } 
-  else {
-    y = obj.value;
-  }  
-  if(x===""  && obj.value==="."){
-     x="0.";
-	 y="0.";
-  }
-  else{  
-	x=x+obj.value;
-  }	 */
+ 
 /*сбросить на ноль*/
   if(obj.id==="clear"){
     y=0;
@@ -70,19 +54,32 @@ function result(obj){
 	  if(/[1-9]/.test(obj.value) && y===0 || /[1-9]/.test(obj.value) && y==="0" || /[0]/.test(obj.value) && y==="0" || /[0]/.test(obj.value) && y===0){
 	      y="";
 	  }
-	 
+      if(/[1-9]/.test(obj.value) && x===0 || /[1-9]/.test(obj.value) && x==="0" || /[0]/.test(obj.value) && x==="0" || /[0]/.test(obj.value) && x===0){
+	      x="";
+	  }	 
 	y=y+obj.value;  
     document.getElementById("cur").innerHTML=y; 
-	x="";
-	x=y;
+	x=x+obj.value;
 	document.getElementById("rez").innerHTML=x;
   }
   
   /*знак операции*/
- // if(/[\*\+\-\/]/.test(obj.value)){
-    
-//  }
+  if(/[\*\+\-\/]/.test(obj.value)){
+      if(/[\/]/.test(obj.value)){
+	    y="/";
+	    document.getElementById("cur").innerHTML=y;
+		if(!(/\/$/.test(x))){
+		    x=x+y;
+		}
+		document.getElementById("rez").innerHTML=x;
+		y=0;
+	  }
+  }
   
+  /*знак равно*/
+  if(/[\=]/.test(obj.value)){
+      
+  }
   
 }     /*function end*/
 
