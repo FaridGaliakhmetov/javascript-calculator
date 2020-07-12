@@ -19,7 +19,9 @@
 	height:27px;
 	
 }
-
+#rez {
+	font-size:16px;
+}
 body {
 	background-color:hsl(120,30%,70%);
 }

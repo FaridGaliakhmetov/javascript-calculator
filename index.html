@@ -66,10 +66,37 @@ function result(obj){
   }
   
   /*знак операции*/
-  if(/[\*\+\-\/]/.test(obj.value)){
-      if(/[\/]/.test(obj.value) && !(/\/$/.test(x))){
+  if(/[\*\+\-\/]/.test(obj.value)){      
+      if(/[\/]/.test(obj.value) && !(/[\/\*\+\-]$/.test(x))){
 	    z.push(y);
 	    y="/";
+	    document.getElementById("cur").innerHTML=y;
+		x=x+y;
+        z.push(y);			
+		document.getElementById("rez").innerHTML=x;
+		y=0;
+	  }
+	  if(/[\*]/.test(obj.value) && !(/[\/\*\+\-]$/.test(x))){
+	    z.push(y);
+	    y="*";
+	    document.getElementById("cur").innerHTML=y;
+		x=x+y;
+        z.push(y);			
+		document.getElementById("rez").innerHTML=x;
+		y=0;
+	  }
+	  if(/[\+]/.test(obj.value) && !(/[\/\*\+\-]$/.test(x))){
+	    z.push(y);
+	    y="+";
+	    document.getElementById("cur").innerHTML=y;
+		x=x+y;
+        z.push(y);			
+		document.getElementById("rez").innerHTML=x;
+		y=0;
+	  }
+	  if(/[\-]/.test(obj.value) && !(/[\/\*\+\-]$/.test(x))){
+	    z.push(y);
+	    y="-";
 	    document.getElementById("cur").innerHTML=y;
 		x=x+y;
         z.push(y);			
@@ -79,31 +106,32 @@ function result(obj){
   }
   
   /*знак равно*/
-  if(/[\=]/.test(obj.value)){      
+  if(/[\=]/.test(obj.value) && !(x===y)){      
       z.push(y);
 	  var f,r,g;
-f=z[0];
-for(var i=1;i<z.length;i=i+2){
-    r=z[i];
-    g=z[i+1];
-    if(r==="/"){
-      f = parseFloat(f)/parseFloat(g);
-    }  
-    if(r==="+"){
-      f = parseFloat(f)+parseFloat(g);
-    }
-    if(r==="-"){
-      f = parseFloat(f)-parseFloat(g);
-    }
-    if(r==="*"){
-      f = parseFloat(f)*parseFloat(g);
-    } 
-}
+      f=z[0];
+      for(var i=1;i<z.length;i=i+2){
+        r=z[i];
+        g=z[i+1];
+        if(r==="/"){
+          f = parseFloat(f)/parseFloat(g);
+        }  
+        if(r==="+"){
+          f = parseFloat(f)+parseFloat(g);
+        }
+        if(r==="-"){
+          f = parseFloat(f)-parseFloat(g);
+        }
+        if(r==="*"){
+          f = parseFloat(f)*parseFloat(g);
+        } 
+      }
 	  y=f;
 	  x=x+"="+f;
 	  document.getElementById("cur").innerHTML=y;
       document.getElementById("rez").innerHTML = x;
-      
+      x=f;
+	  z=[];
 	  
   }
   
