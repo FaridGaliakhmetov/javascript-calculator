@@ -72,6 +72,11 @@ function result(obj){
 
   
   /*знак операции*/
+  if(f!==0 && f!=="0" && x===""){
+    x=x+f;
+    y=f;
+    f=0;
+  }
              /*////////////////*/
   if(/[\*\+\-\/]/.test(obj.value)){
     if(/[\/]/.test(obj.value) && !(/\/$/.test(x))){
@@ -178,14 +183,14 @@ z = mass(x);
 	  x=x+"="+f;
 	  document.getElementById("display").innerHTML=y;
     document.getElementById("cur").innerHTML = x;
-      x=""+f;
-	    z=[];    
+      x="";
+      y=0;
+	  z=[];    
 	    
     
   }
 }     /*function end*/
       
-
 </script>
 </body>
 </html>
