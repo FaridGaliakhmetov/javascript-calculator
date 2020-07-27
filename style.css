@@ -6,21 +6,21 @@
 	background-color:green;
 	
 }
-#display {
+#rez {
 	text-align:right;
 	border:1px solid yellow;
 	margin:5px;
 	padding:0 10px 0 0;
 	border-radius:5px;
-	font-size:20px;
+	font-size:16px;
 }
-#display > p{
+#rez > p{
 	margin:0;
 	height:27px;
 	
 }
-#rez {
-	font-size:16px;
+#display {
+	font-size:20px;
 }
 body {
 	background-color:hsl(120,30%,70%);
