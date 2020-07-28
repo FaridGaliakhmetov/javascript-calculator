@@ -13,11 +13,19 @@
 	padding:0 10px 0 0;
 	border-radius:5px;
 	font-size:16px;
+ 
 }
 #rez > p{
-	margin:0;
+	margin:0 5px;
 	height:27px;
 	
+}
+#cur {
+  display:flex;
+  justify-content:flex-end;
+  overflow:hidden;
+  align-content:space-around;
+  
 }
 #display {
 	font-size:20px;
