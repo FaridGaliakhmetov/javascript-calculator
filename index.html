@@ -55,21 +55,28 @@ function result(obj){
 /*число или знак дроби*/ 
 
   if(/\d/.test(obj.value) || obj.value==="." && !(/\./g.test(y)) ){
-      /*убирает начальный ноль при первом вводе*/
-	  if(/[0-9]/.test(obj.value) && y===0 || /[0-9]/.test(obj.value) && y==="0" ){
-	      y="";
-	  }
-    if(/[0-9]/.test(obj.value) && x===0 || /[0-9]/.test(obj.value) && x==="0" ){
-	      x=""; 
-	  }	 
-	y=y+obj.value;  
-    document.getElementById("display").innerHTML=y;
-  if(!(y===0 && /[\/\*\-\+]0$/.test(x) || y==="0" && /[\/\*\-\+]0$/.test(x))){
-	  x=x+obj.value;;
+       /*убирает начальный ноль при первом вводе*/
+	   if(/[0-9]/.test(obj.value) && y===0 || /[0-9]/.test(obj.value) && y==="0" ){
+	       y="";
+	   }
+     if(/[0-9]/.test(obj.value) && x===0 || /[0-9]/.test(obj.value) && x==="0" ){
+	       x=""; 
+	   }	
+     if(y.length<22){
+	     y=y+obj.value;
+       document.getElementById("display").innerHTML=y;
+       if(!(y===0 && /[\/\*\-\+]0$/.test(x) || y==="0" && /[\/\*\-\+]0$/.test(x))){
+	       x=x+obj.value;;
+       }
+	     document.getElementById("cur").innerHTML=x;
+     } else if(y.length===22 && /[0-9]/.test(obj.value)){
+       document.getElementById("display").innerHTML="DIGIT LIMIT MET";
+       setTimeout(function(){document.getElementById("display").innerHTML=y;},2000);
+     }
+     
   }
-	document.getElementById("cur").innerHTML=x;
-  }
-
+    
+    
   
   /*знак операции*/
   if(f!==0 && f!=="0" && x===""){
@@ -185,11 +192,12 @@ z = mass(x);
     document.getElementById("cur").innerHTML = x;
       x="";
       y=0;
-	  z=[];    
+	    z=[];    
 	    
     
   }
 }     /*function end*/
+      
       
 </script>
 </body>
